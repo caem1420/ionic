@@ -1,0 +1,8 @@
+{
+  "name": "myFirstApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "f6025088"
+}
