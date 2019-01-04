@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Leer
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Texto</ion-label>
+    <br>
+
+    <ion-textarea [(ngModel)]="text"></ion-textarea>
+
+  </ion-item>
+
+  <ion-item>
+    <button ion-button full (click)="click()">Leer</button>
+    <button ion-button full color="danger" click="stops()">Parar</button>
+  </ion-item>
+</ion-content>

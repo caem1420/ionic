@@ -1,0 +1,8 @@
+{
+  "name": "Leer",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "id": "02fa2479"
+}
