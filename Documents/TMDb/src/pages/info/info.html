@@ -1,0 +1,69 @@
+<!--
+  Generated template for the InfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title *ngIf="tipobool">{{response?.original_title}}</ion-title>
+    <ion-title *ngIf="!tipobool">{{response?.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="card-background-page">
+  <ion-card>
+    <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{response?.poster_path}}">
+    <div *ngIf="tipobool" class="card-title">{{response?.title}}</div>
+    <div *ngIf="tipobool" class="card-subtitle">{{response?.release_date}}</div>
+
+    <div *ngIf="!tipobool" class="card-title">{{response?.name}}</div>
+    <div *ngIf="!tipobool" class="card-subtitle">{{response?.first_air_date}}</div>
+  </ion-card>
+  <h4 text-center padding strong>
+    Descripcion
+  </h4>
+  <p text-justify padding>
+    {{response?.overview}}
+  </p>
+
+
+  <ul *ngFor="let item of response?.genres">
+    <li>
+      {{item?.name}}
+    </li>
+  </ul>
+
+
+  <ion-card>
+    <div>
+      <ion-icon name='ios-star-half-outline' item-start style="color: orange"></ion-icon>
+      Rating
+      <ion-badge item-end>{{response?.vote_average}} / 10</ion-badge>
+    </div>
+  </ion-card>
+
+  <ion-card>
+    <div *ngIf="!tipobool">
+      <ion-icon name='ios-list-box-outline' item-start style="color: black"></ion-icon>
+      Temporadas
+      <ion-badge item-end>{{response?.number_of_seasons}}</ion-badge>
+    </div>
+  </ion-card>
+
+  <h4 text-center padding strong>
+    Compañias de produccion
+  </h4>
+
+  <ul *ngFor="let item of response?.production_companies">
+    <li>
+      {{item?.name}}
+    </li>
+  </ul>
+
+
+
+</ion-content>

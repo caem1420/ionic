@@ -1,0 +1,52 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-searchbar [(ngModel)]="busqueda" (ionInput)="onInput($event)"></ion-searchbar>
+  </ion-navbar>
+  <ion-item>
+    <ion-label>Tipo</ion-label>
+    <ion-select [(ngModel)]="tipo">
+      <ion-option value="movie">Movies</ion-option>
+      <ion-option value="tv">Tv shows</ion-option>
+    </ion-select>
+  </ion-item>
+
+
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <button ion-button full color="primary" (click)="genero()">Buscar por genero</button>
+  </ion-item>
+
+  <ion-card *ngFor="let item of response?.results " (click)="info(item.id)">
+    <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{item.poster_path}}">
+    <ion-card-content>
+      <ion-card-title *ngIf="!tipobool">
+        {{item.name}}
+
+      </ion-card-title>
+
+      <ion-card-title *ngIf="tipobool">
+        {{item.title}}
+
+      </ion-card-title>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name='ios-star-half-outline' item-start style="color: orange"></ion-icon>
+      Rating
+      <ion-badge item-end>{{item.vote_average}} / 10</ion-badge>
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>
