@@ -1,0 +1,29 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <button ion-button full icon-left (click)="toggleAppTheme()">
+    <ion-icon name="bulb"></ion-icon>Dark mode
+  </button>
+
+  <ion-item>
+    <ion-label>Idioma/Language</ion-label>
+    <ion-select [(ngModel)]="gender" (ionChange)="setlengua()">
+      <ion-option value="es-ES">español</ion-option>
+      <ion-option value="en-US">Ingles</ion-option>
+    </ion-select>
+  </ion-item>
+
+</ion-content>

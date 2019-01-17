@@ -17,12 +17,13 @@
 <ion-content padding class="card-background-page">
   <ion-card>
     <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{response?.poster_path}}">
-    <div *ngIf="tipobool" class="card-title">{{response?.title}}</div>
-    <div *ngIf="tipobool" class="card-subtitle">{{response?.release_date}}</div>
-
-    <div *ngIf="!tipobool" class="card-title">{{response?.name}}</div>
-    <div *ngIf="!tipobool" class="card-subtitle">{{response?.first_air_date}}</div>
   </ion-card>
+  <h3 text-center strong *ngIf="tipobool">{{response?.title}}</h3>
+  <h3 text-center *ngIf="tipobool">{{response?.release_date}}</h3>
+  <h3 text-center strong *ngIf="!tipobool">{{response?.name}}</h3>
+  <h3 text-center *ngIf="!tipobool">{{response?.first_air_date}}</h3>
+
+
   <h4 text-center padding strong>
     Descripcion
   </h4>
@@ -63,6 +64,12 @@
       {{item?.name}}
     </li>
   </ul>
+
+  <ion-item>
+    <button ion-button full color="primary" (click)="simila()">Buscar similares</button>
+    <button ion-button full color="primary" (click)="trailer()">Ver trailer</button>
+    <button ion-button full color="primary" (click)="creditos()">Ver actores / Creditos</button>
+  </ion-item>
 
 
 

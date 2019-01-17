@@ -11,6 +11,12 @@ import { HomePage } from '../pages/home/home';
 import { SeriesPage } from '../pages/series/series';
 import { InfoPage } from '../pages/info/info';
 import { GeneroPage } from '../pages/genero/genero';
+import { SimilarPage } from '../pages/similar/similar';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { TrailerPage } from '../pages/trailer/trailer';
+import { SettingsProvider } from '../providers/settings/settings';
+import { SettingsPage } from '../pages/settings/settings';
+import { CreditosPage } from '../pages/creditos/creditos';
 
 @NgModule({
   declarations: [
@@ -20,7 +26,11 @@ import { GeneroPage } from '../pages/genero/genero';
     SearchPage,
     SeriesPage,
     InfoPage,
-    GeneroPage
+    GeneroPage,
+    SimilarPage,
+    TrailerPage,
+    SettingsPage,
+    CreditosPage
   ],
   imports: [
     BrowserModule,
@@ -35,13 +45,19 @@ import { GeneroPage } from '../pages/genero/genero';
     SearchPage,
     SeriesPage,
     InfoPage,
-    GeneroPage
+    GeneroPage,
+    SimilarPage,
+    TrailerPage,
+    SettingsPage,
+    CreditosPage
     
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    YoutubeVideoPlayer,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    SettingsProvider
   ]
 })
 export class AppModule {}

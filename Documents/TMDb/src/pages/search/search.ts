@@ -5,6 +5,7 @@ import { InfoPage } from '../info/info';
 import { AlertController } from 'ionic-angular';
 import { Title } from '@angular/platform-browser';
 import { GeneroPage } from '../genero/genero';
+import { SettingsProvider } from '../../providers/settings/settings';
 
 /**
  * Generated class for the SearchPage page.
@@ -23,7 +24,7 @@ export class SearchPage {
   tipo: any;
   response: any;
   tipobool: boolean;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, private alertCtrl: AlertController, public settings: SettingsProvider) {
   }
 
   ionViewDidLoad() {
@@ -33,13 +34,13 @@ export class SearchPage {
     console.log(this.busqueda + " " + this.tipo);
     if (this.tipo === "movie") {
       this.tipobool = true;
-      this.http.get("https://api.themoviedb.org/3/search/movie?api_key=1e21ebd2dc402db8d2ff2ca061d96f56&language=en-US&query=" + this.busqueda + "&page=1&include_adult=false")
+      this.http.get("https://api.themoviedb.org/3/search/movie?api_key=1e21ebd2dc402db8d2ff2ca061d96f56&language="+this.settings.lengua+"&query=" + this.busqueda + "&page=1&include_adult=false")
         .subscribe(res => {
           this.response = JSON.parse(res["_body"]);
         })
     }else if ( this.tipo === "tv"){
       this.tipobool = false;
-      this.http.get("https://api.themoviedb.org/3/search/tv?api_key=1e21ebd2dc402db8d2ff2ca061d96f56&language=en-US&query=" + this.busqueda + "&page=1&include_adult=false")
+      this.http.get("https://api.themoviedb.org/3/search/tv?api_key=1e21ebd2dc402db8d2ff2ca061d96f56&language="+this.settings.lengua+"&query=" + this.busqueda + "&page=1&include_adult=false")
         .subscribe(res => {
           this.response = JSON.parse(res["_body"]);
         })
