@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { Http } from '@angular/http';
 import { AlertController } from 'ionic-angular';
@@ -25,7 +25,7 @@ export class TrailerPage {
   idvideo: any;
 
 
-  constructor(public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams,public http: Http, private youtube: YoutubeVideoPlayer) {
+  constructor(public platform: Platform,public navCtrl: NavController,private alertCtrl: AlertController, public navParams: NavParams,public http: Http, private youtube: YoutubeVideoPlayer) {
     this.tipo = this.navParams.get("tipo");
     this.id = this.navParams.get("ids");
   }
@@ -47,8 +47,14 @@ export class TrailerPage {
           console.log(this.response);
           this.idvideo = this.response["results"][0]["key"];
           console.log(this.idvideo)
-
-          this.youtube.openVideo(this.idvideo);
+          
+          console.log("is browser", this.platform.is("browser"))
+          if(this.platform.is("android") || this.platform.is("ios")){
+            console.log("Carlos id video is", this.idvideo)
+            this.youtube.openVideo(this.idvideo);
+          }else{
+            window.open(this.idvideo,"__self")
+          }
 
         }else{
           console.log("Notiene video")
@@ -78,7 +84,7 @@ export class TrailerPage {
           this.idvideo = this.response["results"][0]["key"];
           console.log(this.idvideo)
           
-            this.youtube.openVideo(this.idvideo);
+            this.youtube.openVideo(this.idvideo)
 
           }else{
             console.log("Notiene video")

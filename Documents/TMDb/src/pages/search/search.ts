@@ -29,6 +29,7 @@ export class SearchPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchPage');
+    this.tipo = "movie"
   }
   onInput() {
     console.log(this.busqueda + " " + this.tipo);
